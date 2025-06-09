@@ -47,6 +47,34 @@ app.layout = html.Div([
         html.Div(id='profit-indicator', style={'width': '32%', 'display': 'inline-block', 'padding': '10px'}),
     ], style={'display': 'flex'}),
 
+    html.Div([
+        dcc.Graph(id='timeseries-chart'),
+    ], style={'width': '100%', 'padding': '10px'}),
+
+    html.Div([
+        html.Div([
+            dcc.Graph(id='pie-chart'),
+        ], style={'width': '48%', 'display': 'inline-block'}),
+
+        html.Div([
+            dcc.Graph(id='histogram-chart'),
+        ], style={'width': '48%', 'display': 'inline-block', 'float': 'right'}),
+    ]),
+
+    html.Div([
+        dash_table.DataTable(
+            id='data-table',
+            page_size=10,
+            style_table={'overflowX': 'auto'},
+            style_cell={
+                'height': 'auto',
+                'minWidth': '100px', 'maxWidth': '180px',
+                'whiteSpace': 'normal'
+            }
+        )
+    ], style={'padding': '10px'}),
+
+    dcc.Store(id='stored-data')
 ])
 
 
